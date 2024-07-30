@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Logo } from "../../Logo";
 import { useMobileMenu } from "./useMobileMenu";
