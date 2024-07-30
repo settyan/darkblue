@@ -1,9 +1,10 @@
 import { invariant } from "ts-invariant";
+import { type ResolvingMetadata, type Metadata } from "next";
 import { RootWrapper } from "./pageWrapper";
 
-export const metadata = {
-	title: "Checkout · Saleor Storefront example",
-};
+export const generateMetadata = async (_params: any, parent: ResolvingMetadata): Promise<Metadata> => ({
+	title: `Checkout · ${(await parent).title?.absolute}`,
+});
 
 export default function CheckoutPage({
 	searchParams,

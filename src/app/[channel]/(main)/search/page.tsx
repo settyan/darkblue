@@ -1,14 +1,14 @@
 import { notFound, redirect } from "next/navigation";
+import { type ResolvingMetadata, type Metadata } from "next";
 import { OrderDirection, ProductOrderField, SearchProductsDocument } from "@/gql/graphql";
 import { executeGraphQL } from "@/lib/graphql";
 import { Pagination } from "@/ui/components/Pagination";
 import { ProductList } from "@/ui/components/ProductList";
 import { ProductsPerPage } from "@/app/config";
 
-export const metadata = {
-	title: "Search products · Saleor Storefront example",
-	description: "Search products in Saleor Storefront example",
-};
+export const generateMetadata = async (_params: any, parent: ResolvingMetadata): Promise<Metadata> => ({
+	title: `Search products · ${(await parent).title?.absolute}`,
+});
 
 export default async function Page({
 	searchParams,

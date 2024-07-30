@@ -1,13 +1,14 @@
 import Image from "next/image";
+import { type ResolvingMetadata, type Metadata } from "next";
 import { CheckoutLink } from "./CheckoutLink";
 import { DeleteLineButton } from "./DeleteLineButton";
 import * as Checkout from "@/lib/checkout";
 import { formatMoney, getHrefForVariant } from "@/lib/utils";
 import { LinkWithChannel } from "@/ui/atoms/LinkWithChannel";
 
-export const metadata = {
-	title: "Shopping Cart · Saleor Storefront example",
-};
+export const generateMetadata = async (_params: any, parent: ResolvingMetadata): Promise<Metadata> => ({
+	title: `Shopping Cart · ${(await parent).title?.absolute}`,
+});
 
 export default async function Page({ params }: { params: { channel: string } }) {
 	const checkoutId = Checkout.getIdFromCookies(params.channel);

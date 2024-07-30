@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { type Metadata } from "next";
+import { type ResolvingMetadata, type Metadata } from "next";
 import edjsHTML from "editorjs-html";
 import xss from "xss";
 import { PageGetBySlugDocument } from "@/gql/graphql";
@@ -7,14 +7,17 @@ import { executeGraphQL } from "@/lib/graphql";
 
 const parser = edjsHTML();
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
+export const generateMetadata = async (
+	{ params }: { params: { slug: string } },
+	parent: ResolvingMetadata,
+): Promise<Metadata> => {
 	const { page } = await executeGraphQL(PageGetBySlugDocument, {
 		variables: { slug: params.slug },
 		revalidate: 60,
 	});
 
 	return {
-		title: `${page?.seoTitle || page?.title || "Page"} · Saleor Storefront example`,
+		title: `${page?.seoTitle || page?.title || "Page"} · ${(await parent).title?.absolute}`,
 		description: page?.seoDescription || page?.seoTitle || page?.title,
 	};
 };
