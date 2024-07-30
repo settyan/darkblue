@@ -7,7 +7,7 @@ import { ProductList } from "@/ui/components/ProductList";
 import { ProductsPerPage } from "@/app/config";
 
 export const generateMetadata = async (_params: any, parent: ResolvingMetadata): Promise<Metadata> => ({
-	title: `Products Cart · ${(await parent).title?.absolute}`,
+	title: `Products · ${(await parent).title?.absolute}`,
 });
 
 export default async function Page({
