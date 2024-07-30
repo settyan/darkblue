@@ -26,7 +26,7 @@ export async function find(checkoutId: string) {
 						id: checkoutId,
 					},
 					cache: "no-cache",
-			  })
+				})
 			: { checkout: null };
 
 		return checkout;

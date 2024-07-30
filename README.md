@@ -72,6 +72,7 @@
 ## Quickstart
 
 ### 1. Create Saleor backend instance
+
 To quickly get started with the backend, use a free developer account at [Saleor Cloud](https://cloud.saleor.io/?utm_source=storefront&utm_medium=github).
 
 Alternatively you can [run Saleor locally using docker](https://docs.saleor.io/docs/3.x/setup/docker-compose?utm_source=storefront&utm_medium=github).
@@ -95,6 +96,7 @@ saleor storefront create --url https://{SALEOR_HOSTNAME}/graphql/
 #### [Option 2] Manual install
 
 Clone repository:
+
 ```bash
 git clone https://github.com/saleor/storefront.git
 ```
@@ -112,7 +114,6 @@ Then, [install `pnpm`](https://pnpm.io/installation) and run the following comma
 ```bash
 pnpm i
 ```
-
 
 ## Payments
 

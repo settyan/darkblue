@@ -52,5 +52,5 @@ export default defineConfig({
 				command: "pnpm run start",
 				url: baseURL,
 				reuseExistingServer: !process.env.CI,
-		  },
+			},
 });
